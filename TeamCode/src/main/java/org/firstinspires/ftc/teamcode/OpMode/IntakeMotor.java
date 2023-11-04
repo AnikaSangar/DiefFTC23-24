@@ -4,7 +4,13 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 public class IntakeMotor {
 
-    public static void spinMotor(DcMotor m, boolean tempButton) {
-        m.setPower(tempButton ? 1 : 0);
+    static DcMotor motor;
+
+    public static void initIntakeMotor(DcMotor m) {
+        motor = m;
+    }
+
+    public static void runIntake(boolean tempButton) {
+        motor.setPower(tempButton ? 1 : 0);
     }
 }
