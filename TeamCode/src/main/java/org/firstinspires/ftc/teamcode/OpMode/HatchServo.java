@@ -10,8 +10,12 @@ public class HatchServo {
         hatchServo = s;
     }
 
-    public static void runHatchServo(boolean tempButton) {
-        hatchServo.setPosition(tempButton ? 0.25 : 0);
+    public static void runHatchServo(boolean tempButton, boolean tempButton2) {
+        if(tempButton) {
+            hatchServo.setPosition(0.25);
+        } else if (tempButton2) {
+            hatchServo.setPosition(0);
+        }
     }
 
 }

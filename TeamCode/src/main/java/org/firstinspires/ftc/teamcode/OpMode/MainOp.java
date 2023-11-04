@@ -74,8 +74,8 @@ public class MainOp extends LinearOpMode {
 
             IntakeMotor.runIntake(gamepad1.a /*TEMP*/);
             LinearSlides.runLinSlides(gamepad1.right_trigger, gamepad1.left_trigger /*TEMP*/);
-            HingeServo.runHingeServo(true);
-            HatchServo.runHatchServo(true);
+            HingeServo.runHingeServo(true, true);
+            HatchServo.runHatchServo(true, true);
 
 
             //man fuck this copy pasted drivechain bullshit
