@@ -51,29 +51,20 @@ public class MainOp extends LinearOpMode {
 
         intakeMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        //***********************************TEMPSERVO INIT***********************************************
+        //***********************************HINGE/HATCH INIT***********************************************
 
-        Servo tempServo = hardwareMap.servo.get("ts"); //CHANGE ME - TEMP
-        Servo tempServo2 = hardwareMap.servo.get("ts2"); //CHANGE ME - TEMP
-        Servo tempServo3 = hardwareMap.servo.get("ts3"); //CHANGE ME - TEMP
-        CRServo tempCRServo = hardwareMap.crservo.get("tcrs"); //CHANGE ME - TEMP
-        CRServo tempCRServo2 = hardwareMap.crservo.get("tcrs2"); //CHANGE ME - TEMP
-        CRServo tempCRServo3 = hardwareMap.crservo.get("tcrs3"); //CHANGE ME - TEMP
-
+        Servo hingeServo = hardwareMap.servo.get("hngs");
+        Servo hatchServo = hardwareMap.servo.get("htcs");
 
         //********************************INIT METHODS************************************************************
 
         IntakeMotor.initIntakeMotor(intakeMotor);
         LinearSlides.initLinSlides(leftLinSlide, rightLinSlide);
+        HingeServo.hingeServoInit(hingeServo);
+        HatchServo.hatchServoInit(hatchServo);
 
-        //***********************************TEMP TOMFOOLERY***********************************************
 
-        TEMPCRSERVOCLASS.tempCRServoInit(tempCRServo); //CHANGE ME - TEMP
-        TEMPCRSERVOCLASS2.tempCRServo2Init(tempCRServo2); //CHANGE ME - TEMP
-        TEMPCRSERVOCLASS3.tempCRServo3Init(tempCRServo3); //CHANGE ME - TEMP
-        TEMPSERVOCLASS.tempServoInit(tempServo); //CHANGE ME - TEMP
-        TEMPSERVOCLASS2.tempServo2Init(tempServo2); //CHANGE ME - TEMP
-        TEMPSERVOCLASS3.tempServo3Init(tempServo3); //CHANGE ME - TEMP
+        //******************************TELEOP********************************************************
 
         waitForStart();
 
@@ -83,16 +74,9 @@ public class MainOp extends LinearOpMode {
 
             IntakeMotor.runIntake(gamepad1.a /*TEMP*/);
             LinearSlides.runLinSlides(gamepad1.right_trigger, gamepad1.left_trigger /*TEMP*/);
+            HingeServo.runHingeServo(true);
+            HatchServo.runHatchServo(true);
 
-
-            //******************************TEMP WOOOHOOOOOOOOOOO*****************************************
-
-            TEMPCRSERVOCLASS.runTempCRServo(true); //CHANGE ME - TEMP
-            TEMPCRSERVOCLASS2.runTempCRServo2(true); //CHANGE ME - TEMP
-            TEMPCRSERVOCLASS3.runTempCRServo3(true); //CHANGE ME - TEMP
-            TEMPSERVOCLASS.runTempServo(true); //CHANGE ME - TEMP
-            TEMPSERVOCLASS2.runTempServo2(true); //CHANGE ME - TEMP
-            TEMPSERVOCLASS3.runTempServo3(true); //CHANGE ME - TEMP
 
             //man fuck this copy pasted drivechain bullshit
 
