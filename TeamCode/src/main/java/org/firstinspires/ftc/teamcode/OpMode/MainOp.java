@@ -72,10 +72,10 @@ public class MainOp extends LinearOpMode {
 
         while(opModeIsActive()) {
 
-            IntakeMotor.runIntake(gamepad1.a /*TEMP*/);
-            LinearSlides.runLinSlides(gamepad1.right_trigger, gamepad1.left_trigger /*TEMP*/);
-            HingeServo.runHingeServo(true, true);
-            HatchServo.runHatchServo(true, true);
+            IntakeMotor.runIntake(gamepad2.right_bumper /*TEMP*/);
+            LinearSlides.runLinSlides(gamepad2.right_trigger, gamepad2.left_trigger /*TEMP*/);
+            HingeServo.runHingeServo(gamepad2.x, gamepad2.y);
+            HatchServo.runHatchServo(gamepad2.a, gamepad2.b);
 
 
             //man fuck this copy pasted drivechain bullshit
@@ -91,6 +91,11 @@ public class MainOp extends LinearOpMode {
             double backLeftPower = (y - x + rx)/ denominator;
             double frontRightPower = (y - x - rx)/ denominator;
             double backRightPower = (y + x - rx)/ denominator;
+
+            frontLeft.setPower(frontLeftPower);
+            frontRight.setPower(frontRightPower);
+            backLeft.setPower(backLeftPower);
+            backRight.setPower(backRightPower);
         }
     }
 }
