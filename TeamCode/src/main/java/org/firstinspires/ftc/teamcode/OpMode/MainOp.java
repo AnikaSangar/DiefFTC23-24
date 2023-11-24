@@ -32,36 +32,36 @@ public class MainOp extends LinearOpMode {
 
         //******************************LINSLIDE INIT****************************************************************
 
-        DcMotor leftLinSlide = hardwareMap.dcMotor.get("LLS");
-        DcMotor rightLinSlide = hardwareMap.dcMotor.get("RLS");
+        //DcMotor leftLinSlide = hardwareMap.dcMotor.get("LLS");
+        //DcMotor rightLinSlide = hardwareMap.dcMotor.get("RLS");
 
-        leftLinSlide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        rightLinSlide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        //leftLinSlide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        //rightLinSlide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        leftLinSlide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        leftLinSlide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        rightLinSlide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        rightLinSlide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        //leftLinSlide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //leftLinSlide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        //rightLinSlide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //rightLinSlide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        leftLinSlide.setDirection(DcMotorSimple.Direction.REVERSE); //UNSURE IF THIS IS CORRECT
+        //leftLinSlide.setDirection(DcMotorSimple.Direction.REVERSE); //UNSURE IF THIS IS CORRECT
 
         //*********************************INTAKE/GOGEKKOWHEEL INIT*****************************************************
 
-        DcMotor intakeMotor = hardwareMap.dcMotor.get("GKKOWHL");
+        DcMotor intakeMotor = hardwareMap.dcMotor.get("FINTK");
+        DcMotor intakeMotorBack = hardwareMap.dcMotor.get("BINTK");
 
         intakeMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        intakeMotorBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        //***********************************HINGE/HATCH INIT***********************************************
+        //***********************************HINGE INIT***********************************************
 
-        Servo hingeServo = hardwareMap.servo.get("hngs");
-        Servo hatchServo = hardwareMap.servo.get("htcs");
+        //Servo hatchServo = hardwareMap.servo.get("htcs");
 
         //********************************INIT METHODS************************************************************
 
-        IntakeMotor.initIntakeMotor(intakeMotor);
-        LinearSlides.initLinSlides(leftLinSlide, rightLinSlide);
-        HingeServo.hingeServoInit(hingeServo);
-        HatchServo.hatchServoInit(hatchServo);
+        IntakeMotor.initIntakeMotor(intakeMotor, intakeMotorBack);
+        //LinearSlides.initLinSlides(leftLinSlide, rightLinSlide);
+        //HatchServo.hatchServoInit(hatchServo);
 
 
         //******************************TELEOP********************************************************
@@ -72,10 +72,9 @@ public class MainOp extends LinearOpMode {
 
         while(opModeIsActive()) {
 
-            IntakeMotor.runIntake(gamepad2.right_bumper /*TEMP*/);
-            LinearSlides.runLinSlides(gamepad2.right_trigger, gamepad2.left_trigger /*TEMP*/);
-            HingeServo.runHingeServo(gamepad2.x, gamepad2.y);
-            HatchServo.runHatchServo(gamepad2.a, gamepad2.b);
+            IntakeMotor.runIntake(gamepad2.right_bumper, gamepad2.left_bumper /*TEMP*/);
+            //LinearSlides.runLinSlides(gamepad2.right_trigger, gamepad2.left_trigger /*TEMP*/);
+            //HatchServo.runHatchServo(gamepad2.a, gamepad2.b);
 
 
             //man fuck this copy pasted drivechain bullshit
