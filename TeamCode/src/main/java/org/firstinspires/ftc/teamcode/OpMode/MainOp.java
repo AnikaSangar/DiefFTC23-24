@@ -53,16 +53,20 @@ public class MainOp extends LinearOpMode {
         //intakeMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         //intakeMotorBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        //***********************************HINGE INIT***********************************************
+        //***********************************SERVOS INIT***********************************************
 
         Servo rightArm = hardwareMap.servo.get("clawR");
         Servo leftArm = hardwareMap.servo.get("clawL");
+        Servo clawHinge = hardwareMap.servo.get("clawHinge");
+        Servo hinge = hardwareMap.servo.get("otherHinge");
         //********************************INIT METHODS************************************************************
 
         //IntakeMotor.initIntakeMotor(intakeMotor, intakeMotorBack);
         LinearSlides.initLinSlides(leftLinSlide);
         //HatchServo.hatchServoInit(hatchServo);
         Claw.initClaw(rightArm, leftArm);
+        ClawHinge.initClawHinge(clawHinge);
+        OtherHinge.initHinge(hinge);
 
         //******************************TELEOP********************************************************
 
@@ -75,6 +79,8 @@ public class MainOp extends LinearOpMode {
             //IntakeMotor.runIntake(gamepad2.right_bumper, gamepad2.left_bumper /*TEMP*/);
             LinearSlides.runLinSlides(gamepad2.right_trigger, gamepad2.left_trigger /*TEMP*/);
             Claw.runClaw(gamepad2.a, gamepad2.b);
+            ClawHinge.runClawHinge(gamepad2.right_bumper, gamepad2.left_bumper);
+            OtherHinge.runHinge(gamepad2.x, gamepad2.y);
 
 
             //man fuck this copy pasted drivechain bullshit
