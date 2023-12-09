@@ -10,9 +10,10 @@ public class OtherHinge {
 
     public static void runHinge(boolean tempbutton6, boolean tempbutton7){
         if(tempbutton6){
-            hinge.setPosition(0.6);
+            hinge.setPosition(0.25);
         }else if(tempbutton7){
-            hinge.setPosition(0);
+            hinge.setPosition(-0.25);
+            hinge.setDirection(Servo.Direction.REVERSE);
         }
     }
 

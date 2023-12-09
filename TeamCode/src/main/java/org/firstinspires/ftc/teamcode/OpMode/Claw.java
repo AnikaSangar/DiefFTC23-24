@@ -15,11 +15,13 @@ public class Claw {
 
     public static void runClaw(boolean tempButton4, boolean tempButton5) {
         if(tempButton4) {
-            clawRight.setPosition(0.25);
-            clawLeft.setPosition(-0.25);
+            clawRight.setPosition(0.125);
+            clawLeft.setDirection(Servo.Direction.REVERSE);
+            clawLeft.setPosition(0.125);
         } else if (tempButton5) {
-            clawRight.setPosition(0);
-            clawLeft.setPosition(0);
+            clawRight.setDirection(Servo.Direction.REVERSE);
+            clawRight.setPosition(-0.125);
+            clawLeft.setPosition(0.125);
         }
     }
 

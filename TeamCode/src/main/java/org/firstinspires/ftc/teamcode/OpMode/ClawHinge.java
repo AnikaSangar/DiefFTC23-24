@@ -10,7 +10,7 @@ public class ClawHinge {
 
     public static void runClawHinge(boolean tempButton1, boolean tempButton2){
         if(tempButton1){
-            clawHinge.setPosition(0.5);
+            clawHinge.setPosition(-0.5);
         }else if(tempButton2){
             clawHinge.setPosition(0);
         }

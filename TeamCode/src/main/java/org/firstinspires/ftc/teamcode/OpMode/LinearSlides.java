@@ -20,7 +20,7 @@ public class LinearSlides {
             leftLin.setPower(-tempTrig2);
             //rightLin.setPower(-tempTrig2);
         } else {
-            leftLin.setPower(0);
+            leftLin.setPower(0.0);
             //rightLin.setPower(0);
         }
     }
